@@ -6,30 +6,26 @@ type ParkingSystem struct {
 
 //carType is 1, 2, or 3; 0 <= big, medium, small <= 1000; At most 1000 calls will be made to addCar
 func Constructor(big int, medium int, small int) ParkingSystem {
-    
+    pk := new(ParkingSystem)   
 }
 
 
 func (this *ParkingSystem) AddCar(carType int) bool {
-    i := 2
-    switch i {
-    case 1:
-        if ParkingSystem.big>0{
-            ParkingSystem.big= ParkingSystem.big-1
-            return true}
-        else{return false}
-    case 2:
-        if ParkingSystem.medium>0{
-            ParkingSystem.medium= ParkingSystem.medium-1
-            return true}
-        else{return false}
-        
-    case 3:
-        if ParkingSystem.small>0{
-            ParkingSystem.small= ParkingSystem.small-1
-            return true}
-        else{return false}
-        
+    switch carType {
+        case default:
+            return false
+        case 1 && ParkingSystem.big>0:
+                ParkingSystem.big= ParkingSystem.big-1
+                return true
+    
+        case 2 && ParkingSystem.medium>0:
+                ParkingSystem.medium= ParkingSystem.medium-1
+                return true
+           
+        case 3 && ParkingSystem.small>0:
+                ParkingSystem.small= ParkingSystem.small-1
+                return true 
+              
     }
     
 }
