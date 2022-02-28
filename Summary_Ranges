@@ -1,0 +1,20 @@
+//228. Summary Ranges
+//https://leetcode.com/problems/summary-ranges/
+
+func summaryRanges(nums []int) []string {
+    rangednums := []int
+    newrange[] := []int
+    newnumber := int
+    
+    num := nums[]
+    if len(num) > 0{}
+    //if it is a solo number (next number more than 2 with no previous number at 1 diff
+    rangednums[] := append(rangednums[], newnumber)
+    //if it is a range (each number has only 1 of difference with the next one, ends when the next number has more than one)
+    rangednums[] := append(rangednums[], newrange[] )
+    //if array 0 return a null array
+    } else {
+        return nums[]
+    }
+    return rangednums[]
+}
