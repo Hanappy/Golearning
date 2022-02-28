@@ -1,5 +1,5 @@
 package main
-
+/* solution Neocore
 type CarType int
 
 // J'ai créer ça, une enum, juste pour que ça soit plus lisible, c'est une sorte d'alias du coup
@@ -8,10 +8,15 @@ const (
 	MediumCar CarType = 2
 	BigCar    CarType = 3
 )
-
+*/
 //carType is 1, 2, or 3; 0 <= big, medium, small <= 1000; At most 1000 calls will be made to addCar
+
 type ParkingSystem struct {
 	big, medium, small int
+
+func Constructor(big int, medium int, small int) ParkingSystem {
+   return ParkingSystem{big,medium,small}
+
 }
 
 // En Go, on n'appelle pas l'objet "this", ou "self", car ce n'est pas vraiment une class à proprement parler
@@ -51,7 +56,7 @@ func (parkingSystem *ParkingSystem) AddCar(carType CarType) bool {
 		return false
 	}
 }
-
+/* solution Neocore
 func main() {
 	// C'est pas vraiment un constructeur, simplement on initialise notre structure.
 	// S'il y'avait un process plus complexe pour initialiser (du genre vérifier que le nombre est positif)
@@ -62,3 +67,35 @@ func main() {
 	parkingSystem := ParkingSystem{big: 3, medium: 5, small: 10}
 	parkingSystem.AddCar(SmallCar)
 }
+=======
+func (this *ParkingSystem) AddCar(carType int) bool {
+    PS := this
+    switch carType {
+        case 1:
+            if PS.big>0 {
+                PS.big= PS.big-1
+                return true
+            } else {return false}
+        case 2:
+            if PS.medium>0 {
+                PS.medium= PS.medium-1
+                return true
+            } else {return false}
+
+        case 3:
+            if PS.small>0 {
+                PS.small= PS.small-1
+                return true
+            } else {return false}
+        default:
+		    return false
+    }
+    
+}*/
+
+/**
+ * Your ParkingSystem object will be instantiated and called as such:
+ * obj := Constructor(big, medium, small);
+ * param_1 := obj.AddCar(carType);
+ */
+
