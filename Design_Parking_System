@@ -1,15 +1,73 @@
-//1603. Design Parking System
-type ParkingSystem struct {
-    big ,medium ,small int
-    
-}
+package main
+/* solution Neocore
+type CarType int
 
+// J'ai créer ça, une enum, juste pour que ça soit plus lisible, c'est une sorte d'alias du coup
+const (
+	SmallCar  CarType = 1
+	MediumCar CarType = 2
+	BigCar    CarType = 3
+)
+*/
 //carType is 1, 2, or 3; 0 <= big, medium, small <= 1000; At most 1000 calls will be made to addCar
+
+type ParkingSystem struct {
+	big, medium, small int
+
 func Constructor(big int, medium int, small int) ParkingSystem {
    return ParkingSystem{big,medium,small}
+
 }
 
+// En Go, on n'appelle pas l'objet "this", ou "self", car ce n'est pas vraiment une class à proprement parler
+// Simplement une fonction qu'on "attache", donc on nomme l'objet simplement comme ça
+// J'ai passé le formatter de Go (go fmt), c'est plus lisible comme ça ;)
+// Et supprimé la variable i que j'ai pas trop compris ^^
+// Ensuite il faut savoir que l'emplacement des accolades est important, il faut que ça suite la façon dont
+// c'est écrit actuellement, je t'expliquerait pourquoi mais tu peux juste suivre ça en attendant
+// Donc `} else {`
+// J'ai ajouté un cas "default", au cas où on passe un type (int) inconnu
+// (en vérité je suis surpris que le compilateur accepte "4" par exemple, je creuserai après)
+func (parkingSystem *ParkingSystem) AddCar(carType CarType) bool {
+	switch carType {
+	case BigCar:
+		if parkingSystem.big > 0 {
+			parkingSystem.big = parkingSystem.big - 1
+			return true
+		} else {
+			return false
+		}
+	case MediumCar:
+		if parkingSystem.medium > 0 {
+			parkingSystem.medium = parkingSystem.medium - 1
+			return true
+		} else {
+			return false
+		}
 
+	case SmallCar:
+		if parkingSystem.small > 0 {
+			parkingSystem.small = parkingSystem.small - 1
+			return true
+		} else {
+			return false
+		}
+	default:
+		return false
+	}
+}
+/* solution Neocore
+func main() {
+	// C'est pas vraiment un constructeur, simplement on initialise notre structure.
+	// S'il y'avait un process plus complexe pour initialiser (du genre vérifier que le nombre est positif)
+	// On utiliserai un """contructeur""", qui est simplement une méthode nommée NewParkingSystem
+	// C'est juste un standard, rien d'automatique avec ça
+	// On l'appellerait comme ça NewParkingSystem(3, 5, 10)
+	// Tu remarquera qu'on utilise des {} pour initialiser des structures, et des () pour appeller des fonctions
+	parkingSystem := ParkingSystem{big: 3, medium: 5, small: 10}
+	parkingSystem.AddCar(SmallCar)
+}
+=======
 func (this *ParkingSystem) AddCar(carType int) bool {
     PS := this
     switch carType {
@@ -33,10 +91,11 @@ func (this *ParkingSystem) AddCar(carType int) bool {
 		    return false
     }
     
-}
+}*/
 
 /**
  * Your ParkingSystem object will be instantiated and called as such:
  * obj := Constructor(big, medium, small);
  * param_1 := obj.AddCar(carType);
  */
+
