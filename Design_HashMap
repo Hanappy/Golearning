@@ -1,0 +1,47 @@
+//706. Design HashMap
+//https://leetcode.com/problems/design-hashmap/
+type MyHashMap struct {
+    MyMap map[int]int //key and value here are int
+}  
+
+func Constructor() MyHashMap {
+    HashMap := MyHashMap{MyMap: make(map[int]int)}
+    return HashMap
+}
+
+// Put in the Hashmap the pair of key value
+func (this *MyHashMap) Put(key int, value int)  {
+    this.MyMap[key] = value
+}
+
+// Return 1 -1 if specified key exist in Hashmap
+func (this *MyHashMap) Get(key int) int {
+    _, found := this.MyMap[key]
+    if found==true {
+        return this.MyMap[key]
+    } else {
+        return -1
+    }
+    
+    
+    /*if retkey != 0{
+        return 1
+    } else {
+        return -1
+    }*/
+    
+}
+
+// Remove the value and key to the corresponding key
+func (this *MyHashMap) Remove(key int)  {
+    delete(this.MyMap,key)
+}
+
+
+/**
+ * Your MyHashMap object will be instantiated and called as such:
+ * obj := Constructor();
+ * obj.Put(key,value);
+ * param_2 := obj.Get(key);
+ * obj.Remove(key);
+ */
